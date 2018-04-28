@@ -2,12 +2,12 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Swagger Petstore",
+    "title": "Swagger Code_Reviews",
     "license": {
       "name": "MIT"
     }
   },
-  "host": "petstore.swagger.io",
+  "host": "code_review.swagger.io",
   "basePath": "/v1",
   "schemes": [
     "http"
@@ -19,12 +19,12 @@
     "application/json"
   ],
   "paths": {
-    "/pets": {
+    "/code_repositories": {
       "get": {
-        "summary": "List all pets",
-        "operationId": "listPets",
+        "summary": "list repositories related to specific information",
+        "operationId": "listRepositories",
         "tags": [
-          "pets"
+          "code_repositories"
         ],
         "parameters": [
           {
@@ -38,7 +38,7 @@
         ],
         "responses": {
           "200": {
-            "description": "An paged array of pets",
+            "description": "An paged array of repositories?",
             "headers": {
               "x-next": {
                 "type": "string",
@@ -46,7 +46,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/Pets"
+              "$ref": "#/definitions/Repositories"
             }
           },
           "default": {
@@ -58,10 +58,10 @@
         }
       },
       "post": {
-        "summary": "Create a pet",
-        "operationId": "createPets",
+        "summary": "Write a repo to the mongo query",
+        "operationId": "createRepositories",
         "tags": [
-          "pets"
+          "repositories"
         ],
         "responses": {
           "201": {
@@ -76,41 +76,9 @@
         }
       }
     },
-    "/pets/{petId}": {
-      "get": {
-        "summary": "Info for a specific pet",
-        "operationId": "showPetById",
-        "tags": [
-          "pets"
-        ],
-        "parameters": [
-          {
-            "name": "petId",
-            "in": "path",
-            "required": true,
-            "description": "The id of the pet to retrieve",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Expected response to a valid request",
-            "schema": {
-              "$ref": "#/definitions/Pets"
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    }
   },
   "definitions": {
-    "Pet": {
+    "Repository": {
       "required": [
         "id",
         "name"
@@ -128,10 +96,10 @@
         }
       }
     },
-    "Pets": {
+    "Repositories": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Pet"
+        "$ref": "#/definitions/Repositories"
       }
     },
     "Error": {
